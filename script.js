@@ -4,6 +4,7 @@ const hr = document.getElementById("hour");
 const lapList = document.getElementById("lapList");
 const lapBtn = document.getElementById("lapButton");
 const warn = document.getElementById("warning");
+const lapContent = document.querySelector(".lapContent");
 const totalLapList = 13;
 
 let lapCount = 1 ;
@@ -49,12 +50,12 @@ const reset = () => {
 const addLap = (lappedTime)=>{
     console.log(lapCount)
     if(lapCount<totalLapList){
-        lapList.innerHTML+=`<p>${lapCount}).   ${lappedTime}</p>`;
+        lapList.innerHTML+=`<p><span class="lapCount">${lapCount}.</span>  <span class='lapTime'>${lappedTime}</span></p>`;
         ++lapCount;
     }
     else{
         lapList.removeChild(lapList.firstChild);
-        lapList.innerHTML+=`<p>${lapCount}).   ${lappedTime}</p>`;
+        lapList.innerHTML+=`<p><span class="lapCount">${lapCount}.</span>  <span class='lapTime'>${lappedTime}</span></p>`;
         ++lapCount;
         
     }
@@ -64,6 +65,8 @@ const off = document.getElementById("stop");
 const restart = document.getElementById("reset");
 
 lapBtn.addEventListener("click",()=>{
+    lapContent.style.visibility = "visible";
+
     let currentTimer =hr.innerText+":"+min.innerText+":"+sec.innerText;
     console.log(currentTimer);
     if(isStarted)
